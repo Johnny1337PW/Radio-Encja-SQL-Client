@@ -1,0 +1,178 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="icon" href="https://cdn.discordapp.com/attachments/770230597766479922/803300959534710834/LOGORADIAmini.png">
+    <meta charset="UTF-8">
+    <title>Edytuj Audycje</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	font-family: ' Open Sans ', sans-serif;
+	background: #092756;
+	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4)
+		10%, rgba(138, 114, 76, 0) 40%),
+		-moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%,
+		rgba(42, 60, 87, .4) 100%),
+		-moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4)
+		10%, rgba(138, 114, 76, 0) 40%),
+		-webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%,
+		rgba(42, 60, 87, .4) 100%),
+		-webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+	background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4)
+		10%, rgba(138, 114, 76, 0) 40%),
+		-o-linear-gradient(top, rgba(57, 173, 219, .25) 0%,
+		rgba(42, 60, 87, .4) 100%),
+		-o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+	background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4)
+		10%, rgba(138, 114, 76, 0) 40%),
+		-ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%,
+		rgba(42, 60, 87, .4) 100%),
+		-ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4)
+		10%, rgba(138, 114, 76, 0) 40%),
+		linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%,
+		rgba(42, 60, 87, .4) 100%),
+		linear-gradient(135deg, #670d10 0%, #092756 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D',
+		endColorstr='#092756', GradientType=1);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+  		background-size: 100% 100%;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.container {
+  height: 200px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+</style>
+
+
+
+
+</head>
+<body>
+<div style="color:white" align="center">
+    <!-- Page header -->
+    <h1>Edytuj</h1>
+
+    <!-- End line/new line -->
+    <br/>
+    <form action="#" th:action="@{/audycje/update}" th:object="${audycje}"
+          method="post">
+
+        <!-- Table -->
+        <!-- Table  -->
+        <table border="1" cellpadding="13" style="color:white">
+
+            <div align="center">
+
+                <tr>
+                    <td>Numer audycji:</td>
+                    <td style="color:black"><input style="color:black" type="text" th:field="*{Numer_audycji}"readonly="readonly"></td>
+                </tr>
+                <!-- Table 2 row -->
+                <tr>
+                    <td>Typ audycji:</td>
+                    <<td><select style="color:black" id="typ_audycji" name="typ_audycji" class="formField"/>
+                    <option value="Wiadomosci">Wiadomości</option>
+                    <option value="Muzyka">Muzyka</option>
+                    <option value="Wywiad">Wywiad</option>
+                    <option value="Blok Reklamowy">Blok Reklamowy</option>
+                    </select></td>
+                </tr>
+                <!-- Table 3 row -->
+                <tr>
+                    <td>Czas rozpoczęcia:</td>
+                    <td><div style="color:black" class='input-group date' id='datepicker' >
+                        <input type='text' class="form-control" name="czas_rozpoczecia" id="czas_rozpoczecia"/>
+                        <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <td>Czas zakończenia:</td>
+                    <td><div style="color:black" class='input-group date' id='datepicker1' >
+                        <input type='text' class="form-control" name="czas_zakonczenia" id="czas_zakonczenia"/>
+                        <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+                    </div></td>
+                </tr>
+
+                <!-- Button save -->
+            </div>
+        </table>
+<br/><br/><br/>
+        <div class = "container"><div class ="center"><button class="button button1" type="submit" text>Zapisz</button></div></div>
+
+
+    </form>
+    <div class=center>    <button class="button button1" onclick="location.href='/'" type="button">Powrót do strony głównej</button></div>
+</div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script >
+	    $(function () {
+	        $('#datepicker').datepicker({
+	            format: "yyyy-mm-dd",
+	            autoclose: true,
+	            todayHighlight: true,
+		        showOtherMonths: true,
+		        selectOtherMonths: true,
+		        autoclose: true,
+		        changeMonth: true,
+		        changeYear: true,
+		        orientation: "button"
+	        });
+	    });
+	    
+	</script>
+	
+</body>
+</html>
